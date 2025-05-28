@@ -1,23 +1,25 @@
 package br.dev.andre.tarefas.model;
 
+import br.dev.andre.tarefas.utils.Utils;
+
 public class Funcionario {
 
+	private String matricula;
 	private String nome;
 	private String cargo;
 	private String setor;
-	
-	public Funcionario() {
-		System.out.println("criando um funcionário");
-	}
+	private double salario;
 	
 	public Funcionario(String nome) {
-		setNome(nome); 
+		System.out.println("criando o funcionario %s como %s.");
+		setNome(nome);
+		setMatricula(Utils.gerarUUID8());
 	}
 	
 	public Funcionario(String nome, String cargo) {
 		this.nome = nome;
 		this.cargo = cargo;
-		System.out.printf("criando um funcionário %s como %s", nome, cargo);
+		this.matricula = Utils.gerarUUID8();
 	}
 	
 	public String getNome() {
@@ -42,6 +44,31 @@ public class Funcionario {
 
 	public void setSetor(String setor) {
 		this.setor = setor;
+	}
+	
+	public Funcionario(Double salario) {
+		
+	}
+	
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		matricula = matricula;
+	}
+
+	public double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+
+	@Override
+	public String toString() {
+		return matricula + "," + nome + "," + cargo + "," + setor + "," + salario + "\n";
 	}
 
 }

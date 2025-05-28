@@ -7,27 +7,25 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.UUID;
 
+import br.dev.andre.tarefas.dao.FuncionarioDAO;
 import br.dev.andre.tarefas.model.Funcionario;
 import br.dev.andre.tarefas.model.Status;
 import br.dev.andre.tarefas.model.Tarefa;
+import br.dev.andre.tarefas.utils.Utils;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		Funcionario funcionario = new Funcionario("cleito", "programador");
 		
-		Tarefa tarefa = new Tarefa(funcionario);
-		tarefa.setNome("Lavar a louça");
-		tarefa.setDescricao("Lavar a louça antes de eu chegar");
-		tarefa.setDataInicio(LocalDate.of(2025, 05, 21));
-		tarefa.setPrazo(1);
-		tarefa.setStatus(Status.EM_ANDAMENTO);
-		
-		
-		//	testarLeituraEscritaArquivo();
+		Funcionario funcionario = new Funcionario("Ana Maria Braga", "programador");
+		funcionario.setSetor("Tecnologia da Informação");
+		funcionario.setSalario(8000.00);
 
+		FuncionarioDAO dao = new FuncionarioDAO(funcionario);
+		dao.gravar();
 	}
 
 	private static void testarLeituraEscritaArquivo() {

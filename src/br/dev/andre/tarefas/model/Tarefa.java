@@ -2,6 +2,7 @@ package br.dev.andre.tarefas.model;
 
 import java.time.LocalDate;
 
+
 public class Tarefa {
 
 	private String nome;
@@ -11,7 +12,6 @@ public class Tarefa {
 	private int prazo;
 	private LocalDate dataEntrega;
 	private Status status;
-	
 	public String getNome() {
 		return nome;
 	}
@@ -67,6 +67,7 @@ public class Tarefa {
 	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
+
 
 	public Status getStatus() {
 		
