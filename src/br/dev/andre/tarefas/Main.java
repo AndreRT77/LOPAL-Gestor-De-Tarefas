@@ -13,19 +13,25 @@ import br.dev.andre.tarefas.dao.FuncionarioDAO;
 import br.dev.andre.tarefas.model.Funcionario;
 import br.dev.andre.tarefas.model.Status;
 import br.dev.andre.tarefas.model.Tarefa;
+import br.dev.andre.tarefas.ui.FuncionarioFrame;
+import br.dev.andre.tarefas.ui.FuncionarioListaFrame;
 import br.dev.andre.tarefas.utils.Utils;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
+		FuncionarioDAO dao = new FuncionarioDAO(null);
+		dao.getFuncionarios();
+//		new FuncionarioListaFrame();
+//		new FuncionarioFrame();
 		
-		Funcionario funcionario = new Funcionario("Ana Maria Braga", "programador");
-		funcionario.setSetor("Tecnologia da Informação");
-		funcionario.setSalario(8000.00);
-
-		FuncionarioDAO dao = new FuncionarioDAO(funcionario);
-		dao.gravar();
+//		Funcionario funcionario = new Funcionario("Ana Maria Braga", "programador");
+//		funcionario.setSetor("Tecnologia da Informação");
+//		funcionario.setSalario(8000.00);
+//
+//		FuncionarioDAO dao = new FuncionarioDAO(funcionario);
+//		dao.gravar();
 	}
 
 	private static void testarLeituraEscritaArquivo() {
