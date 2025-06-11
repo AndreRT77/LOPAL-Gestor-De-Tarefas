@@ -7,22 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.dev.andre.tarefas.factory.*;
+import br.dev.andre.tarefas.model.Tarefa;
 
 
 public class TarefaDAO {
 }
 
-	private Funcionario funcionario;
-	private ArquivoFuncionarioFactory aff = new ArquivoFuncionarioFactory();
+	private Tarefa tarefa;
+	private ArquivoTarefaFactory aff = new ArquivoTarefaFactory();
 
-	public FuncionarioDAO(Funcionario funcionario) {
-		this.funcionario = funcionario;
+	public TarefaDAO(Tarefa tarefa) {
+		this.tarefa = tarefa;
 	}
 
 	public boolean gravar() {
 		try {
 			BufferedWriter bw = aff.getBw();
-			bw.write(funcionario.toString());
+			bw.write(tarefa.toString());
 			bw.flush();
 			return true;
 		} catch (Exception e) {
@@ -33,9 +34,9 @@ public class TarefaDAO {
 
 	}
 
-	public List<Funcionario> getFuncionarios() {
+	public List<Tarefa> getTarefas() {
 
-		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+		List<Tarefa> tarefas = new ArrayList<Tarefa>();
 
 		try {
 			BufferedReader br = aff.getBr();
@@ -43,19 +44,21 @@ public class TarefaDAO {
 			while (linha != null) {
 				linha = br.readLine();
 				if (linha != null) {
-					String[] funcionarioVetor = linha.split(",");
-					Funcionario funcionario = new Funcionario("");
-					funcionario.setMatricula(funcionarioVetor[0]);
-					funcionario.setNome(funcionarioVetor[1]);
-					funcionario.setCargo(funcionarioVetor[2]);
-					funcionario.setSetor(funcionarioVetor[3]);
-					funcionario.setSalario(Double.parseDouble(funcionarioVetor[4]));
-					funcionarios.add(funcionario);
+					String[] tarefaVetor = linha.split(",");
+					Tarefa tarefa = new Tarefa("");
+					tarefa.setDescricao(tarefaVetor[0]);
+					tarefa.setNome(tarefaVetor[1]);
+					tarefa.setResponsavel(tarefaVetor[2]);
+					tarefa.setStatus(tarefaVetor[3]);
+					tarefa.setPrazo(Integer.parseInt(tarefaVetor[4]));
+					tarefa.setDataInicio(Double.parseDouble(tarefaVetor[5]));
+					tarefa.setDataEntrega(Double.parseDouble(tarefaVetor[6]));
+					tarefas.add(tarefa);
 
 				}
 			}
 
-			return funcionarios;
+			return tarefas;
 
 		} catch (IOException e) {
 			e.printStackTrace();
