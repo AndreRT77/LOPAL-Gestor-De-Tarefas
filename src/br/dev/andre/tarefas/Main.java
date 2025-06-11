@@ -21,9 +21,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		FuncionarioDAO dao = new FuncionarioDAO(null);
-		dao.getFuncionarios();
-//		new FuncionarioListaFrame();
+		new FuncionarioListaFrame();
 //		new FuncionarioFrame();
 		
 //		Funcionario funcionario = new Funcionario("Ana Maria Braga", "programador");

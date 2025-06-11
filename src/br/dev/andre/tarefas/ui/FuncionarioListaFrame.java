@@ -3,6 +3,8 @@ package br.dev.andre.tarefas.ui;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import br.dev.andre.tarefas.dao.FuncionarioDAO;
 import br.dev.andre.tarefas.model.Funcionario;
 
 public class FuncionarioListaFrame {
@@ -51,11 +54,24 @@ public class FuncionarioListaFrame {
 		tabelaFuncionarios = new JTable(model);
 		scrollFuncionarios = new JScrollPane(tabelaFuncionarios);
 		scrollFuncionarios.setBounds(10, 70, 680, 300);
+		
 		carregarDadosTabela();
+		
+		btnNovo = new JButton("Cadastrar novo funcionário");
+		btnNovo.setBounds(10, 400, 250, 50);
+		
+		btnNovo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FuncionarioFrame(telaFuncionarioLista);	
+			}
+		});
 		
 		
 		painel.add(labelTitulo);
 		painel.add(scrollFuncionarios);
+		painel.add(btnNovo);
 		
 		telaFuncionarioLista.setVisible(true);
 	}
@@ -64,18 +80,22 @@ public class FuncionarioListaFrame {
 		
 		List<Funcionario> funcionarios = new ArrayList<>();
 		
+		FuncionarioDAO dao = new FuncionarioDAO(null);
+		funcionarios = dao.getFuncionarios();
+		
 		int i = 0;
 		
 		Object[] [] dados = new Object[funcionarios.size()][3];
 		
 		for(Funcionario f : funcionarios) {
-			dados[i] [0] = f.getMatricula();
+			dados[i] [0] = f.getMatricula().toUpperCase();
 			dados[i] [1] = f.getNome();
 			dados[i] [2] = f.getCargo();
 			i++;
 			
 		}
 		model.setDataVector(dados, colunas);
+
 	}
 
 }

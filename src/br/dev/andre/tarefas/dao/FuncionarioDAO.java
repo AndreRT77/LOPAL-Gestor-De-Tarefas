@@ -43,7 +43,7 @@ public class FuncionarioDAO {
 				linha = br.readLine();
 				if (linha != null) {
 					String[] funcionarioVetor = linha.split(",");
-					Funcionario funcionario = new Funcionario(null);
+					Funcionario funcionario = new Funcionario("");
 					funcionario.setMatricula(funcionarioVetor[0]);
 					funcionario.setNome(funcionarioVetor[1]);
 					funcionario.setCargo(funcionarioVetor[2]);
@@ -58,6 +58,7 @@ public class FuncionarioDAO {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+			return null;
 		}
 	}
 

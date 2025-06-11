@@ -11,7 +11,7 @@ public class Funcionario {
 	private double salario;
 	
 	public Funcionario(String nome) {
-		System.out.println("criando o funcionario %s como %s.");
+		System.out.printf("criando o funcionario %s como %s.", nome, cargo);
 		setNome(nome);
 		setMatricula(Utils.gerarUUID8());
 	}
@@ -21,6 +21,8 @@ public class Funcionario {
 		this.cargo = cargo;
 		this.matricula = Utils.gerarUUID8();
 	}
+	
+	
 	
 	public String getNome() {
 		return nome;
@@ -46,16 +48,14 @@ public class Funcionario {
 		this.setor = setor;
 	}
 	
-	public Funcionario(Double salario) {
-		
-	}
+
 	
 	public String getMatricula() {
 		return matricula;
 	}
 
 	public void setMatricula(String matricula) {
-		matricula = matricula;
+		this.matricula = matricula;
 	}
 
 	public double getSalario() {
