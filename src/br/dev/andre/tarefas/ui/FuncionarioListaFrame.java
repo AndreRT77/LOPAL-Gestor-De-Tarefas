@@ -64,7 +64,8 @@ public class FuncionarioListaFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new FuncionarioFrame(telaFuncionarioLista);	
+				new FuncionarioFrame(telaFuncionarioLista);
+				carregarDadosTabela();
 			}
 		});
 		

@@ -11,7 +11,7 @@ public class Funcionario {
 	private double salario;
 	
 	public Funcionario(String nome) {
-		System.out.printf("criando o funcionario %s como %s.", nome, cargo);
+		System.out.printf("criando o funcionario %s como %s.\n", nome, cargo);
 		setNome(nome);
 		setMatricula(Utils.gerarUUID8());
 	}
